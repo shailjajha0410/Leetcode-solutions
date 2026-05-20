@@ -1,12 +1,36 @@
-#pragma GCC optimize("O3, unroll-loops")
-static int maxArea(int* height, int n) {
-    int A=0;
-    for(int l=0, r=n-1; l<r; ){
-        A=fmax(A, fmin(height[l], height[r])*(r-l));
-        if (height[r]<height[l]) r--;
-        else l++;
+int maxArea(int* height, int heightSize) {
+
+    int left = 0;
+    int right = heightSize - 1;
+
+    int maxWater = 0;
+
+    while(left < right) {
+
+        int h;
+
+        if(height[left] < height[right]) {
+            h = height[left];
+        } else {
+            h = height[right];
+        }
+
+        int width = right - left;
+
+        int area = h * width;
+
+        if(area > maxWater) {
+            maxWater = area;
+        }
+
+        if(height[left] < height[right]) {
+            left++;
+        } else {
+            right--;
+        }
     }
-    return A;
+
+    return maxWater;
 }
 
 // Synced seamlessly with LeetHub Pro
