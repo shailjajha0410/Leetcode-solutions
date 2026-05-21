@@ -1,37 +1,36 @@
-int value(char c) {
-
-    switch(c) {
-        case 'I': return 1;
-        case 'V': return 5;
-        case 'X': return 10;
-        case 'L': return 50;
-        case 'C': return 100;
-        case 'D': return 500;
-        case 'M': return 1000;
-    }
-
-    return 0;
+int roman(char c){
+    if (c=='I'){return 1;}
+    if (c=='V'){return 5;}
+    if(c=='X'){return 10;}
+    if(c=='L'){return 50;}
+    if(c=='C'){return 100;}
+    if(c=='D'){return 500;}
+    if(c=='M'){return 1000;}
+    else{return 0;}
 }
 
+#include<string.h>
 int romanToInt(char* s) {
+    int result = 0;
+    int n = strlen(s);
 
-    int total = 0;
+    for(int i = 0; i < n; i++){
+        int current = roman(s[i]);
 
-    for(int i = 0; s[i] != '\0'; i++) {
-
-        int current = value(s[i]);
-        int next = value(s[i + 1]);
-
-        // Subtraction case
-        if(current < next)
-            total -= current;
-
-        // Normal addition
-        else
-            total += current;
+        if(i == n-1){                  // ✅ check last FIRST!
+            result = result + current; // always add last character
+        }
+        else{
+            int next = roman(s[i+1]); // ✅ only read next if it exists!
+            if(current >= next){
+                result = result + current;
+            }
+            else{
+                result = result - current;
+            }
+        }
     }
-
-    return total;
+    return result;
 }
 
 // Synced seamlessly with LeetHub Pro
