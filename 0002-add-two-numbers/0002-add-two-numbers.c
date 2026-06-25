@@ -1,9 +1,8 @@
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 
-    struct ListNode *dummy =
-        (struct ListNode*)malloc(sizeof(struct ListNode));
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
 
-    struct ListNode *temp = dummy;
+    struct ListNode* temp = dummy;
 
     int carry = 0;
 
@@ -23,7 +22,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 
         carry = sum / 10;
 
-        struct ListNode *newNode =
+        struct ListNode* newNode =
             (struct ListNode*)malloc(sizeof(struct ListNode));
 
         newNode->val = sum % 10;
@@ -38,4 +37,4 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 
 // Synced seamlessly with LeetHub Pro
 // Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
-// Get it here: https://chromewebstore.google.com/detail/leethub-v4/bcilpkkbokcopmabingnndookdogmbna
+// Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
